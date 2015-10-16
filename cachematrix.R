@@ -1,14 +1,15 @@
-## The functions below create a special "matrix" that can be inveted using solve,
-## but will cache the result if inverted many times.
+## The functions below create a special "matrix" that can be inverted using cacheSolve,
+## cacheSolve will store the inverted matrix for faster repeated solves
 
-## Creates a special "matrix" that can be inverted and chaches the inverted matrix
+## Creates a special "matrix" that can be inverted and 
+## supply methods to access and cache the embedded matrix and its inverse.
 makeCacheMatrix <- function(x = matrix()) {
         storedInverse <- NULL
 	getMatrix = function(){
                 x
         }
 	setMatrix = function(newMatrix){
-                ##invalidate the cache
+                ##invalidate the cache since we have a new matrix
                 storedInverse <<- NULL
                 x <<- newMatrix
         }
